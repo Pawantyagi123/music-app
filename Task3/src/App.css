@@ -8,7 +8,7 @@
 body {
   margin: 0 auto;
   backdrop-filter: brightness(50%);
-  background: url("/public/images/background.avif");
+  background: url("/public/Images/background.avif");
  
   background-position: center;
   background-repeat: no-repeat;
@@ -26,7 +26,7 @@ height: 110vh;
 }
 
 .app-header {
-background: url("/public/images/SHADOW.jpg");
+background: url("/public/Images/SHADOW.jpg");
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
