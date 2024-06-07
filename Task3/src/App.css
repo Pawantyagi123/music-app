@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   margin: 0 auto;
   backdrop-filter: brightness(50%);
@@ -26,7 +30,6 @@ background: url("../src/Components/Images/SHADOW.jpg");
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
-
   background-color: rgba(240, 232, 232, 0.837);
   padding: 5px;
   color: rgba(240, 233, 233, 0.21);
@@ -78,10 +81,10 @@ font-size: 20px;
 .player {
  color: white;
  display: flex;
- justify-content: space-between;
+ justify-content: space-around;
  align-items: center;
  flex-direction: column;
- padding: 10px;
+ padding: 20px;
   background-color: rgba(17, 17, 17, 0.515);
   backdrop-filter: blur(10px);
   height: 70vh;
@@ -161,9 +164,6 @@ font-size: 20px;
   box-shadow: 0px 0px 10px rgb(55, 195, 205);
 }
 }
-
-
-
 
 .song-list img{
   width: 100px;
