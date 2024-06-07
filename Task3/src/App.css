@@ -91,6 +91,7 @@ font-size: 20px;
   border-radius: 5px;
   animation: border 5s linear infinite;
   transition: border 1s ease-in-out linear;
+  margin-top: 20px;
 }
 
 @keyframes border{
@@ -175,18 +176,31 @@ font-size: 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex: 0;
+  padding: 4px;
 }
 
 button{
-border: 1px solid white;
 background-color: transparent;
 font-size: 30px;
 color: white;
+width: 50px;
+height: 50px;
 border-radius: 50%;
 text-align: center;
 padding-top: 7px;
+padding-left: 5px;
+padding-right: 5px;
+border: none;
 }
 
+button:hover{
+  border: 1px solid white;
+}
+p{
+  font-size: 15px;
+  width: 150px;
+}
 .progress-bar{
   width: 100%;
   display: flex;
@@ -194,6 +208,7 @@ padding-top: 7px;
   align-items: center;
   text-align: center;
   color: white;
+  
 }
 
 input{
@@ -246,12 +261,12 @@ input{
 
 .volume-control {
   display: flex;
-  gap: 30px;
+  
   justify-content: space-between;
   align-items: center;
  flex-direction: column;
  margin-left: 353px;
- margin-top: -36px;
+ margin-top: -44px;
 }
 
 .volume-bar {
@@ -259,8 +274,6 @@ input{
   height: 6px;
   border-radius: 4px;
   outline: none;
-  transform: rotate(270deg);
-  position: relative;
   
 }
 
@@ -269,3 +282,6 @@ input{
   font-size: 20px;
 }
 
+span{
+  width: 30px;
+}

@@ -88,20 +88,6 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             <img src={currentSong.image} alt="" className={isPlaying ? "rotate" : "notrotate"}/>
             <p>{currentSong.title} by {currentSong.artist}</p>
             <audio ref={audioRef} src={currentSong.src} autoPlay/>
-            <div className="progress-bar">
-            <span>{formatTime(currentTime)}</span>&nbsp;&nbsp;
-                <input
-                    type="range"
-                    value={currentTime}
-                    max={duration || 0}
-                    onChange={handleSeek}
-                    className="seek-bar"
-                />&nbsp;&nbsp;
-             <span>{formatTime(duration)}</span>
-                   
-                
-            </div>
-            <br />
             <div className="player-controls">
                 <button onClick={handlePrevSong}><GiPreviousButton /></button>
                 <button onClick={handlePlayPause}>{isPlaying ? <GiPauseButton /> : <GiPlayButton />}</button>
@@ -119,6 +105,21 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
                     />
                     <button onClick={toggleMute} className='mute'>{isMuted ? <FaVolumeMute /> : <FaVolumeUp />}</button>
                 </div> */}
+            <div className="progress-bar">
+            <span>{formatTime(currentTime)}</span>&nbsp;&nbsp;
+                <input
+                    type="range"
+                    value={currentTime}
+                    max={duration || 0}
+                    onChange={handleSeek}
+                    className="seek-bar"
+                />&nbsp;&nbsp;
+             <span>{formatTime(duration)}</span>
+                   
+                
+            </div>
+            <br />
+           
         </div>
     );
 }
