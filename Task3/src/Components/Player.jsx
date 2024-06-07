@@ -51,6 +51,9 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
     const handleNextSong = () => {
         const nextIndex = (currentSongIndex + 1) % songs.length;
         setCurrentSongIndex(nextIndex);
+        setIsPlaying(!isPlaying);
+         // Always set to play when clicking next song
+    // Ensure autoplay is enabled when clicking next song
     };
 
     const handlePrevSong = () => {
@@ -87,7 +90,7 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             <h2>Now Playing</h2>
             <img src={currentSong.image} alt="" className={isPlaying ? "rotate" : "notrotate"}/>
             <p>{currentSong.title} by <span style={{color:"skyblue"}}>{currentSong.artist}</span></p>
-            <audio ref={audioRef} src={currentSong.src} autoPlay/>
+            <audio ref={audioRef} src={currentSong.src} />
             <div className="player-controls">
                 <button onClick={handlePrevSong}><GiPreviousButton /></button>
                 <button onClick={handlePlayPause}>{isPlaying ? <GiPauseButton /> : <GiPlayButton />}</button>
