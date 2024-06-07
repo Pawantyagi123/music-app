@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../Components/Images/SHADOW.jpg'
+
 export default function Header() {
   return (
     <header className="app-header">

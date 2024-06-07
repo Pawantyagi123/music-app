@@ -12,7 +12,7 @@ function App() {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
   useEffect(() => {
-    fetch('/public/data/songs.json')
+    fetch('/data/songs.json')
       .then(response => response.json())
       .then(data => setSongs(data))
       .catch(error => console.log('Error fetching the songs:', error));

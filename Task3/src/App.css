@@ -8,7 +8,7 @@
 body {
   margin: 0 auto;
   backdrop-filter: brightness(50%);
-  background: url("/src/Components/Images/background.avif");
+  background: url("/public/Images/background.avif");
  
   background-position: center;
   background-repeat: no-repeat;
