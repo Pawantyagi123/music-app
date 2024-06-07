@@ -1,87 +1,65 @@
 [
-    {
-      "id": 1,
-      "title": "O maahi O maahi",
-      "artist": "Arijit Sing",
-      "src": "/audio/song1.mp3",
-      "image": "/Images/image1.png"
-    },
-    {
-      "id": 2,
-      "title": "Saanware",
-      "artist": "Abhishek Sharma",
-      "src": "/audio/song2.mp3",
-      "image": "/Images/image2.png"
-    },
-    {
-      "id": 3,
-      "title": "Hasi",
-      "artist": "Ami Mishra, Kunaal Vermaa, and Shreya Ghoshal",
-      "src": "/audio/song3.mp3",
-      "image": "/Images/image3.png"
-    },
-    {
-      "id": 4,
-      "title": "Daaku",
-      "artist": "Badshah",
-      "src": "/audio/song4.mp3",
-      "image": "/Images/image4.png"
-    },
-    {
-      "id": 5,
-      "title": "90-90 Nabbe Nabbe",
-      "artist": "Gippy Grewal",
-      "src": "/audio/song5.mp3",
-      "image": "/Images/image5.png"
-    },
-    {
-      "id": 6,
-      "title": "Teri batoon main esa uljha",
-      "artist": "Raghav,Asees Kaur",
-      "src": "/audio/song6.mp3",
-      "image": "/Images/image6.jpg"
-    },
-    {
-      "id": 7,
-      "title": "Tum se",
-      "artist": "Sachin Jigar, Raghav Chaitanya",
-      "src": "/audio/song7.mp3",
-      "image": "/Images/image7.jpg"
-    },
-    {
-      "id": 8,
-      "title": "O Sajni re",
-      "artist": "Arijit Sing",
-      "src": "/audio/song8.mp3",
-      "image": "/Images/image8.jpg"
-    },
-    {
-      "id": 9,
-      "title": "Ve Haniya",
-      "artist": "Danny",
-      "src": "/audio/song9.mp3",
-      "image": "/Images/image9.jpg"
-    },
-    {
-      "id": 10,
-      "title": "Tu leja meri jeet bhi leja mere haar",
-      "artist": "Justh",
-      "src": "/audio/song10.mp3",
-      "image": "/Images/image10.jpg"
-    },
-    {
-      "id": 11,
-      "title": "Jale 2",
-      "artist": "Shiva Choudhary",
-      "src": "/audio/song11.mp3",
-      "image": "/Images/image11.jpg"
-    },
-    {
-      "id": 12,
-      "title": "Arjun Valley",
-      "artist": "Bhupinder Babbal",
-      "src": "/audio/song12.mp3",
-      "image": "/Images/image12.jpg"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "title": "O maahi O maahi",
+    "artist": "Arijit Sing",
+    "src": "/audio/song1.mp3",
+    "image": "/Images/image1.png"
+  },
+  {
+    "id": 2,
+    "title": "Saanware",
+    "artist": "Abhishek Sharma",
+    "src": "/audio/song2.mp3",
+    "image": "/Images/image2.png"
+  },
+  {
+    "id": 3,
+    "title": "Hasi",
+    "artist": "Ami Mishra, Kunaal Vermaa, and Shreya Ghoshal",
+    "src": "/audio/song3.mp3",
+    "image": "/Images/image3.png"
+  },
+  {
+    "id": 4,
+    "title": "Daaku",
+    "artist": "Badshah",
+    "src": "/audio/song4.mp3",
+    "image": "/Images/image4.png"
+  },
+  {
+    "id": 5,
+    "title": "90-90 Nabbe Nabbe",
+    "artist": "Gippy Grewal",
+    "src": "/audio/song5.mp3",
+    "image": "/Images/image5.png"
+  },
+  {
+    "id": 9,
+    "title": "Ve Haniya",
+    "artist": "Danny",
+    "src": "/audio/song9.mp3",
+    "image": "/Images/image9.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Tu leja meri jeet bhi leja mere haar",
+    "artist": "Justh",
+    "src": "/audio/song10.mp3",
+    "image": "/Images/image10.jpg"
+  },
+  {
+    "id": 11,
+    "title": "Jale 2",
+    "artist": "Shiva Choudhary",
+    "src": "/audio/song11.mp3",
+    "image": "/Images/image11.jpg"
+  },
+  {
+    "id": 12,
+    "title": "Arjun Valley",
+    "artist": "Bhupinder Babbal",
+    "src": "/audio/song12.mp3",
+    "image": "/Images/image12.jpg"
+  }
+]
