@@ -87,7 +87,7 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             <h2>Now Playing</h2>
             <img src={currentSong.image} alt="" className={isPlaying ? "rotate" : "notrotate"}/>
             <p>{currentSong.title} by <span style={{color:"skyblue"}}>{currentSong.artist}</span></p>
-            <audio ref={audioRef} src={currentSong.src} autoPlay/>
+            <audio ref={audioRef} src={currentSong.src} />
             <div className="player-controls">
                 <button onClick={handlePrevSong}><GiPreviousButton /></button>
                 <button onClick={handlePlayPause}>{isPlaying ? <GiPauseButton /> : <GiPlayButton />}</button>
