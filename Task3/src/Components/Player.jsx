@@ -51,6 +51,7 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
     const handleNextSong = () => {
         const nextIndex = (currentSongIndex + 1) % songs.length;
         setCurrentSongIndex(nextIndex);
+        setIsPlaying(!isPlaying);
     };
 
     const handlePrevSong = () => {
