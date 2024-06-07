@@ -33,6 +33,34 @@
       "artist": "Gippy Grewal",
       "src": "/audio/song5.mp3",
       "image": "/Images/image5.png"
+    },
+    {
+      "id": 9,
+      "title": "Ve Haniya",
+      "artist": "Danny",
+      "src": "/audio/song9.mp3",
+      "image": "/Images/image9.jpg"
+    },
+    {
+      "id": 10,
+      "title": "Tu leja meri jeet bhi leja mere haar",
+      "artist": "Justh",
+      "src": "/audio/song10.mp3",
+      "image": "/Images/image10.jpg"
+    },
+    {
+      "id": 11,
+      "title": "Jale 2",
+      "artist": "Shiva Choudhary",
+      "src": "/audio/song11.mp3",
+      "image": "/Images/image11.jpg"
+    },
+    {
+      "id": 12,
+      "title": "Arjun Valley",
+      "artist": "Bhupinder Babbal",
+      "src": "/audio/song12.mp3",
+      "image": "/Images/image12.jpg"
     }
   ]
   
