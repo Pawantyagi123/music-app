@@ -8,7 +8,7 @@ import { useState,useEffect } from 'react'
 
 function App() {
   const [songs, setSongs] = useState([]);
-
+  const [autoplay, setAutoplay] = useState(true);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
 
   useEffect(() => {
@@ -23,7 +23,8 @@ function App() {
       <Header />
       <div className="content">
       <SongList songs={songs} setCurrentSongIndex={setCurrentSongIndex} />
-        <Player songs={songs} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex} />
+        <Player songs={songs} currentSongIndex={currentSongIndex} setCurrentSongIndex={setCurrentSongIndex}   />
+        
       </div>
       <Footer/>
     </div>

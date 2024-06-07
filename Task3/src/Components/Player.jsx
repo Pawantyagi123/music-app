@@ -86,25 +86,13 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
         <div className="player">
             <h2>Now Playing</h2>
             <img src={currentSong.image} alt="" className={isPlaying ? "rotate" : "notrotate"}/>
-            <p>{currentSong.title} by {currentSong.artist}</p>
+            <p>{currentSong.title} by <span style={{color:"skyblue"}}>{currentSong.artist}</span></p>
             <audio ref={audioRef} src={currentSong.src} autoPlay/>
             <div className="player-controls">
                 <button onClick={handlePrevSong}><GiPreviousButton /></button>
                 <button onClick={handlePlayPause}>{isPlaying ? <GiPauseButton /> : <GiPlayButton />}</button>
                 <button onClick={handleNextSong}><GiNextButton /></button>
             </div>
-            {/* <div className="volume-control">
-                    <input
-                        type="range"
-                        value={volume}
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        onChange={handleVolumeChange}
-                        className="volume-bar"
-                    />
-                    <button onClick={toggleMute} className='mute'>{isMuted ? <FaVolumeMute /> : <FaVolumeUp />}</button>
-                </div> */}
             <div className="progress-bar">
             <span>{formatTime(currentTime)}</span>&nbsp;&nbsp;
                 <input
@@ -120,6 +108,18 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             </div>
             <br />
            
+            {/* <div className="volume-control">
+                    <input
+                        type="range"
+                        value={volume}
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        onChange={handleVolumeChange}
+                        className="volume-bar"
+                    />
+                    <button onClick={toggleMute} className='mute'>{isMuted ? <FaVolumeMute /> : <FaVolumeUp />}</button>
+                </div> */}
         </div>
     );
 }
