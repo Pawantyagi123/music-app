@@ -3,36 +3,36 @@
       "id": 1,
       "title": "O maahi O maahi",
       "artist": "Arijit Sing",
-      "src": "/public/audio/song1.mp3",
-      "image": "/public/images/image1.jpg"
+      "src": "/audio/song1.mp3",
+      "image": "/images/image1.jpg"
     },
     {
       "id": 2,
       "title": "Saanware",
       "artist": "Abhishek Sharma",
-      "src": "/public/audio/song2.mp3",
-      "image": "/public/images/image2.jpg"
+      "src": "/audio/song2.mp3",
+      "image": "/images/image2.jpg"
     },
     {
       "id": 3,
       "title": "Hasi",
       "artist": "Ami Mishra, Kunaal Vermaa, and Shreya Ghoshal",
-      "src": "/public/audio/song3.mp3",
-      "image": "/public/images/image3.jpg"
+      "src": "/audio/song3.mp3",
+      "image": "/images/image3.jpg"
     },
     {
       "id": 4,
       "title": "Daaku",
       "artist": "Badshah",
-      "src": "/public/audio/song4.mp3",
-      "image": "/public/images/image4.jpg"
+      "src": "/audio/song4.mp3",
+      "image": "/images/image4.jpg"
     },
     {
       "id": 5,
       "title": "90-90 Nabbe Nabbe",
       "artist": "Gippy Grewal",
-      "src": "/public/audio/song5.mp3",
-      "image": "/public/images/image5.jpg"
+      "src": "/audio/song5.mp3",
+      "image": "/images/image5.jpg"
     }
   ]
   
