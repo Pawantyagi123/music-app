@@ -26,7 +26,7 @@ height: 110vh;
 }
 
 .app-header {
-background: url("../src/Components/Images/SHADOW.jpg");
+background: url("/public/Images/SHADOW.jpg");
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
