@@ -35,6 +35,27 @@
     "image": "/Images/image5.png"
   },
   {
+    "id": 6,
+    "title": "Teri baaton main esa uljha jiya",
+    "artist": "Raghav, Asees Kaur",
+    "src": "/audio/song6.mp3",
+    "image": "/Images/image6.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Tum se",
+    "artist": "Raghav",
+    "src": "/audio/song7.mp3",
+    "image": "/Images/image7.jpg"
+  },
+  {
+    "id": 8,
+    "title": "O Sajni Re",
+    "artist": "Arijit Sing",
+    "src": "/audio/song8.mp3",
+    "image": "/Images/image8.jpg"
+  },
+  {
     "id": 9,
     "title": "Ve Haniya",
     "artist": "Danny",

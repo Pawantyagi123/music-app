@@ -8,13 +8,13 @@
 body {
   margin: 0 auto;
   backdrop-filter: brightness(50%);
-  background: url("/public/Images/background.avif");
- 
+  /* background: url("/public/Images/background.avif"); */
+ background-color: black;
   background-position: center;
   background-repeat: no-repeat;
  background-size: cover;
   width: 100%;
-height: 110vh;
+height: 120vh;
  font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
   font-weight: weight;
@@ -26,17 +26,28 @@ height: 110vh;
 }
 
 .app-header {
-background: url("/public/Images/SHADOW.jpg");
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-  background-color: rgba(240, 232, 232, 0.837);
-  padding: 5px;
-  color: rgba(240, 233, 233, 0.21);
--webkit-background-clip: text;
+padding: 10px;
 font-size: 20px;
+width: 100%;
+display: flex;
+justify-content: space-between;
 }
 
+.text{
+  background: url("/public/Images/SHADOW.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+   width: 100%;
+    padding: 5px;
+    color: rgba(240, 233, 233, 0.21);
+  background-clip: text;
+}
+@media(max-width:400px){
+  .text h1{
+    font-size: 30px;
+  }
+}
 .content {
   display: flex;
   justify-content: space-around;
@@ -45,17 +56,34 @@ font-size: 20px;
 
 .song-list {
   width: 30%;
-  display: none;
+  height: 572px;
+  display: block;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   position: absolute;
   content: "";
-  left: -530px;
-  top: 89px;
-  background-color: rgba(0, 0, 0, 0.37);
+  left: 0px;
+  top: 130px;
+  background-color: rgb(15, 14, 14);
+  z-index: 2;
+  overflow-y: auto;
+  box-sizing: border-box;
+  color: white;
+  padding-bottom: 0px;
 }
 
+@media(max-width:600px){
+  .song-list{
+    width: 40%;
+  }
+}
+@media(max-width:400px){
+  .song-list{
+    width: 100%;
+    top: 70px;
+  }
+}
 .song-list ul {
   list-style-type: none;
   padding: 0;
@@ -71,23 +99,44 @@ font-size: 20px;
   justify-content: start;
   align-items: center;
   text-align: center;
-  overflow: hidden;
+  
+  
+ 
+}
+
+.song-list::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+.song-list::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the track */
+}
+
+.song-list::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.song-list::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar on hover */
 }
 
 .song-list li:hover {
   background-color: #f0f0f0;
+  color: black;
 }
 
 .player {
  color: white;
  display: flex;
+ 
  justify-content: space-around;
  align-items: center;
  flex-direction: column;
  padding: 20px;
-  background-color: rgba(17, 17, 17, 0.515);
+  background-color: rgba(54, 45, 45, 0.337);
   backdrop-filter: blur(10px);
-  height: 70vh;
+  height: 80vh;
   border-radius: 5px;
   animation: border 5s linear infinite;
   transition: border 1s ease-in-out linear;
@@ -115,7 +164,7 @@ font-size: 20px;
 @media(max-width:600px){
   .player{
     width: 100%;
-   margin: 10px 10px;
+  margin: 30px 10px;
   }
   .content{
     padding: 0px;
@@ -172,7 +221,7 @@ font-size: 20px;
 }
 
 .player-controls{
-  width: 200px;
+  width: 300px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -193,9 +242,7 @@ width: 50px;
 height: 50px;
 }
 
-button:hover{
-  border: 1px solid white;
-}
+
 
 .progress-bar{
   width: 100%;
@@ -256,21 +303,30 @@ input{
 
 .volume-control {
   display: flex;
-  gap: 30px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
- flex-direction: column;
- margin-left: 353px;
- margin-top: -36px;
+  position: absolute;
+  bottom: 20px;
+  left: 117px;
+
 }
 
+@media(max-width:790px){
+  .volume-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 20px;
+    left: 96px;
+  
+  }
+}
 .volume-bar {
-  width: 70px;
+  width: 90px;
   height: 6px;
   border-radius: 4px;
   outline: none;
-  transform: rotate(270deg);
-  position: relative;
   
 }
 
@@ -288,4 +344,30 @@ span{
   width: 30px;
   padding-bottom: 8px;
   gap: 10px;
+}
+
+button {
+  background-color: transparent;
+  font-size: 30px;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  text-align: center;
+  padding-top: 7px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: none;
+}
+
+
+
+button.active {
+  color: yellow; /* Change this to your preferred active color */
+  border: 1px solid yellow;
+}
+
+.play{
+  border: 1px solid white;
+  background-color: black;
 }
