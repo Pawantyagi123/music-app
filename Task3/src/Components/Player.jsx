@@ -115,7 +115,7 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             <h2>Now Playing</h2>
             <img src={currentSong.image} alt="" className={isPlaying ? "rotate" : "notrotate"}/>
             <p style={{width:"300px"}}>{currentSong.title} <b>Song by</b> ( <span style={{color:"skyblue",fontSize:"20px"}}>{currentSong.artist}</span> )</p>
-            <audio ref={audioRef} src={currentSong.src} />
+            <audio ref={audioRef} src={currentSong.src} autoplay/>
             <div className="player-controls">
                 <button onClick={toggleShuffle} className={isShuffle ? 'active' : ''}><FaShuffle/></button>
                 <button onClick={handlePrevSong}><GiPreviousButton /></button>
