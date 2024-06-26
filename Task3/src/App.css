@@ -70,7 +70,8 @@ justify-content: space-between;
   overflow-y: auto;
   box-sizing: border-box;
   color: white;
-  padding-bottom: 0px;
+  padding: 20px;
+  transition: all 1s ease-in-out;
 }
 
 @media(max-width:600px){
@@ -109,27 +110,27 @@ justify-content: space-between;
 }
 
 .song-list::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Color of the track */
+  background: #e4dada;
+  border-radius: 20px; /* Color of the track */
 }
 
 .song-list::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the scrollbar */
+  background: rgb(129, 73, 73); /* Color of the scrollbar */
   border-radius: 5px; /* Rounded corners */
 }
 
-.song-list::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color of the scrollbar on hover */
-}
+
 
 .song-list li:hover {
-  background-color: #f0f0f0;
-  color: black;
+  background-color: #4d4848;
+  color: rgb(239, 230, 230);
+  border-radius: 10px;
+  transition: all 0.5s;
 }
 
 .player {
  color: white;
  display: flex;
- 
  justify-content: space-around;
  align-items: center;
  flex-direction: column;
