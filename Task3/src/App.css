@@ -34,7 +34,7 @@ justify-content: space-between;
 }
 
 .text{
-  background: url("/public/Images/SHADOW.jpg");
+  background: url("/Images/SHADOW.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

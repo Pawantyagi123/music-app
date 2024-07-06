@@ -43,7 +43,6 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             const nextIndex = (currentSongIndex + 1) % songs.length;
             setCurrentSongIndex(nextIndex);
 
-           
         };
 
         audioElement.addEventListener('timeupdate', handleTimeUpdate);
@@ -100,7 +99,6 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
     const toggleRepeat = () => {
         setIsRepeat(!isRepeat);
     };
-   
 
     const formatTime = (time) => {
         const minutes = Math.floor(time / 60);
@@ -115,14 +113,16 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             <h2>Now Playing</h2>
             <img src={currentSong.image} alt="" className={isPlaying ? "rotate" : "notrotate"}/>
             <p style={{width:"300px"}}>{currentSong.title} <b>Song by</b> ( <span style={{color:"skyblue",fontSize:"20px"}}>{currentSong.artist}</span> )</p>
+
             <audio ref={audioRef} src={currentSong.src} autoPlay/>
+
             <div className="player-controls">
                 <button onClick={toggleShuffle} className={isShuffle ? 'active' : ''}><FaShuffle/></button>
                 <button onClick={handlePrevSong}><GiPreviousButton /></button>
                 <button onClick={handlePlayPause} className='play'>{isPlaying ? <GiPauseButton /> : <GiPlayButton />}</button>
                 <button onClick={handleNextSong}><GiNextButton /></button>
                 <button onClick={toggleRepeat} className={isRepeat ? 'active' : ''}><FaRepeat/></button>
-               
+
             </div>
             <div className="progress-bar">
             <span>{formatTime(currentTime)}</span>&nbsp;&nbsp;
@@ -134,7 +134,6 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
                     className="seek-bar"
                 />&nbsp;&nbsp;
              <span>{formatTime(duration)}</span>
-                   
                 
             </div>
             <br />
