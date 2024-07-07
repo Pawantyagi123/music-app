@@ -125,14 +125,14 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
 
             </div>
             <div className="progress-bar">
-            <span>{formatTime(currentTime)}</span>&nbsp;&nbsp;
+            <span>{formatTime(currentTime)}</span>
                 <input
                     type="range"
                     value={currentTime}
                     max={duration || 0}
                     onChange={handleSeek}
                     className="seek-bar"
-                />&nbsp;&nbsp;
+                />
              <span>{formatTime(duration)}</span>
                 
             </div>

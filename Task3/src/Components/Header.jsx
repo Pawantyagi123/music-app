@@ -1,5 +1,6 @@
 import React from 'react'
-import {FaList } from "react-icons/fa";
+import { IoCloseSharp } from "react-icons/io5";
+import { RxHamburgerMenu } from "react-icons/rx";
 export default function Header({isSongListVisible, setIsSongListVisible}) {
 
   const toggleSongList = () => {
@@ -7,7 +8,7 @@ export default function Header({isSongListVisible, setIsSongListVisible}) {
 };
   return (
     <header className="app-header">
-       <button onClick={toggleSongList}><FaList /></button>
+       <button onClick={toggleSongList}>{!isSongListVisible ? <RxHamburgerMenu/> : <IoCloseSharp/>}</button>
        <div className="text"><h1>Shadow Music</h1></div>
       
     </header>

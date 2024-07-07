@@ -56,7 +56,7 @@ justify-content: space-between;
 
 .song-list {
   width: 30%;
-  height: 572px;
+  height: 520px;
   display: block;
   justify-content: center;
   align-items: center;
@@ -64,19 +64,19 @@ justify-content: space-between;
   position: absolute;
   content: "";
   left: 0px;
-  top: 130px;
+  top: 100px;
   background-color: rgb(15, 14, 14);
   z-index: 2;
   overflow-y: auto;
   box-sizing: border-box;
   color: white;
   padding: 20px;
-  transition: all 1s ease-in-out;
+  
 }
 
-@media(max-width:600px){
+@media(max-width:1000px){
   .song-list{
-    width: 40%;
+    width: 100%;
   }
 }
 @media(max-width:400px){
@@ -140,8 +140,6 @@ justify-content: space-between;
   height: 80vh;
   border-radius: 5px;
   animation: border 5s linear infinite;
-  transition: border 1s ease-in-out linear;
-  margin-top: 30px;
 }
 
 @keyframes border{
@@ -252,6 +250,8 @@ height: 50px;
   align-items: center;
   text-align: center;
   color: white;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  gap: 10px;
 }
 
 input{
