@@ -29,7 +29,7 @@ function App() {
         setIsSongListVisible={setIsSongListVisible}/>
       <div className="content">
         {isSongListVisible && (
-          <SongList songs={songs} onSongSelect={handleSongSelect}/>
+          <SongList songs={songs} handleSongSelect={handleSongSelect}/>
         )}
         <Player
           songs={songs}
