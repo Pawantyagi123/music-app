@@ -9,7 +9,7 @@ body {
   margin: 0 auto;
   backdrop-filter: brightness(50%);
   /* background: url("/public/Images/background.avif"); */
- background-color: black;
+ background-color: rgb(17, 16, 16);
   background-position: center;
   background-repeat: no-repeat;
  background-size: cover;
@@ -52,17 +52,16 @@ justify-content: space-between;
   display: flex;
   justify-content: space-around;
   padding: 20px;
+  transition: song-list 0.7s ease-in-out;
 }
 
 .song-list {
-  width: 30%;
   height: 540px;
   display: block;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   position: absolute;
-  content: "";
   left: 0px;
   top: 100px;
   background-color: rgb(15, 14, 14);
@@ -71,20 +70,8 @@ justify-content: space-between;
   box-sizing: border-box;
   color: white;
   padding: 20px;
-  
 }
 
-@media(max-width:1000px){
-  .song-list{
-    width: 100%;
-  }
-}
-@media(max-width:400px){
-  .song-list{
-    width: 100%;
-    top: 70px;
-  }
-}
 .song-list ul {
   list-style-type: none;
   padding: 0;
@@ -100,9 +87,6 @@ justify-content: space-between;
   justify-content: start;
   align-items: center;
   text-align: center;
-  
-  
- 
 }
 
 .song-list::-webkit-scrollbar {
@@ -119,14 +103,19 @@ justify-content: space-between;
   border-radius: 5px; /* Rounded corners */
 }
 
-
-
 .song-list li:hover {
   background-color: #4d4848;
   color: rgb(239, 230, 230);
   border-radius: 10px;
   transition: all 0.5s;
 }
+
+@media(max-width:400px){
+  .song-list{
+    top: 70px;
+  }
+}
+
 
 .player {
  color: white;
@@ -160,20 +149,6 @@ justify-content: space-between;
   }
 }
 
-@media(max-width:600px){
-  .player{
-    width: 100%;
-  margin: 30px 10px;
-  }
-  .content{
-    padding: 0px;
-  }
-  .player img{
-    width: 150px;
-    height: 150px;
-  }
-}
-
 .rotate{
   width: 200px;
   height: 200px;
@@ -189,6 +164,22 @@ justify-content: space-between;
   height: 200px;
   border-radius: 50%;
 }
+
+@media(max-width:600px){
+  .player{
+    width: 100%;
+  margin: 30px 10px;
+  }
+  .content{
+    padding: 0px;
+  }
+  .player img{
+    width: 150px;
+    height: 150px;
+  }
+}
+
+
 @keyframes rotate{
 0%{
   transform: rotate(0deg);
