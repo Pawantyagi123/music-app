@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { GiNextButton, GiPreviousButton, GiPlayButton, GiPauseButton } from "react-icons/gi";
-import { FaVolumeUp, FaVolumeMute,FaList } from "react-icons/fa";
+import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { FaRepeat, FaShuffle } from 'react-icons/fa6';
 
 export default function Player({ songs, currentSongIndex, setCurrentSongIndex }) {
@@ -32,7 +32,6 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             setDuration(audioElement.duration);
         };
 
-
         const handleSongEnd = () => {
             if (isRepeat) {
                 audioElement.currentTime = 0;
@@ -40,9 +39,6 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             } else {
                 handleNextSong();
             }
-            const nextIndex = (currentSongIndex + 1) % songs.length;
-            setCurrentSongIndex(nextIndex);
-
         };
 
         audioElement.addEventListener('timeupdate', handleTimeUpdate);
@@ -52,7 +48,7 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             audioElement.removeEventListener('timeupdate', handleTimeUpdate);
             audioElement.removeEventListener('ended', handleSongEnd);
         };
-    }, [currentSongIndex, setCurrentSongIndex, songs,isRepeat]);
+    }, [currentSongIndex, isRepeat, songs]);
 
     const handlePlayPause = () => {
         setIsPlaying(!isPlaying);
@@ -66,13 +62,13 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
             nextIndex = (currentSongIndex + 1) % songs.length;
         }
         setCurrentSongIndex(nextIndex);
-        setIsPlaying(!isPlaying);
+        setIsPlaying(true);  // Start playing the next song automatically
     };
 
     const handlePrevSong = () => {
         const prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
         setCurrentSongIndex(prevIndex);
-        setIsPlaying(!isPlaying);
+        setIsPlaying(true);  // Start playing the previous song automatically
     };
 
     const handleSeek = (e) => {
@@ -106,26 +102,23 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
         return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
     };
 
-    
-
     return (
         <div className="player">
             <h2>Now Playing</h2>
-            <img src={currentSong.image} alt="" className={isPlaying ? "rotate" : "notrotate"}/>
-            <p style={{width:"300px"}}>{currentSong.title} <b>Song by</b> ( <span style={{color:"skyblue",fontSize:"20px"}}>{currentSong.artist}</span> )</p>
+            <img src={currentSong.image} alt="" className={isPlaying ? "rotate" : "notrotate"} />
+            <p style={{ width: "300px" }}>{currentSong.title} <b>Song by</b> ( <span style={{ color: "skyblue", fontSize: "20px" }}>{currentSong.artist}</span> )</p>
 
-            <audio ref={audioRef} src={currentSong.src} autoPlay/>
+            <audio ref={audioRef} src={currentSong.src} autoPlay />
 
             <div className="player-controls">
-                <button onClick={toggleShuffle} className={isShuffle ? 'active' : ''}><FaShuffle/></button>
+                <button onClick={toggleShuffle} className={isShuffle ? 'active' : ''}><FaShuffle /></button>
                 <button onClick={handlePrevSong}><GiPreviousButton /></button>
                 <button onClick={handlePlayPause} className='play'>{isPlaying ? <GiPauseButton /> : <GiPlayButton />}</button>
                 <button onClick={handleNextSong}><GiNextButton /></button>
-                <button onClick={toggleRepeat} className={isRepeat ? 'active' : ''}><FaRepeat/></button>
-
+                <button onClick={toggleRepeat} className={isRepeat ? 'active' : ''}><FaRepeat /></button>
             </div>
             <div className="progress-bar">
-            <span>{formatTime(currentTime)}</span>
+                <span>{formatTime(currentTime)}</span>
                 <input
                     type="range"
                     value={currentTime}
@@ -133,29 +126,22 @@ export default function Player({ songs, currentSongIndex, setCurrentSongIndex })
                     onChange={handleSeek}
                     className="seek-bar"
                 />
-             <span>{formatTime(duration)}</span>
-                
+                <span>{formatTime(duration)}</span>
             </div>
             <br />
-           
+
             <div className="volume-control">
-            <button onClick={toggleMute} className='mute'>{isMuted ? <FaVolumeMute /> : <FaVolumeUp />}</button>
-                    <input
-                        type="range"
-                        value={volume}
-                        min="0"
-                        max="1"
-                        step="0.01"
-                        onChange={handleVolumeChange}
-                        className="volume-bar"
-                    />
-                </div>
+                <button onClick={toggleMute} className='mute'>{isMuted ? <FaVolumeMute /> : <FaVolumeUp />}</button>
+                <input
+                    type="range"
+                    value={volume}
+                    min="0"
+                    max="1"
+                    step="0.01"
+                    onChange={handleVolumeChange}
+                    className="volume-bar"
+                />
+            </div>
         </div>
     );
 }
-
-
-
-
-
-
