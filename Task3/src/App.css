@@ -8,8 +8,7 @@
 body {
   margin: 0 auto;
   backdrop-filter: brightness(50%);
-  /* background: url("/public/Images/background.avif"); */
- background-color: rgb(17, 16, 16);
+  background: radial-gradient(rgb(93, 187, 218) 0%, rgb(213, 84, 202) 100%);
   background-position: center;
   background-repeat: no-repeat;
  background-size: cover;
@@ -19,6 +18,10 @@ height: 120vh;
   font-optical-sizing: auto;
   font-weight: weight;
   font-style: normal;
+  position: 'absolute';
+  width: '100%';
+  height: '100%';
+  
 }
 
 .app {
@@ -124,11 +127,11 @@ justify-content: space-between;
  align-items: center;
  flex-direction: column;
  padding: 20px;
-  background-color: rgba(54, 45, 45, 0.337);
+  background-color: rgba(164, 156, 156, 0.268);
   backdrop-filter: blur(10px);
-  height: 80vh;
+  height: 70vh;
   border-radius: 5px;
-  animation: border 5s linear infinite;
+ backdrop-filter: blur(15px);
 }
 
 @keyframes border{
@@ -297,23 +300,10 @@ input{
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  bottom: 20px;
-  left: 117px;
+
 
 }
 
-@media(max-width:790px){
-  .volume-control {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    bottom: 20px;
-    left: 96px;
-  
-  }
-}
 .volume-bar {
   width: 90px;
   height: 6px;
@@ -334,7 +324,7 @@ input{
 
 span{
   width: 30px;
-  padding-bottom: 8px;
+ 
   gap: 10px;
 }
 
@@ -361,8 +351,13 @@ button.active {
 }
 
 .play{
-  border: 1px solid white;
-  background-color: black;
+  background-color: transparent;
+  width: 65px;
+  height: 60px;
 }
 
+.play:hover{
+  background-color: #4d4848cd;
+  
+}
 

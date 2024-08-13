@@ -1,147 +1,212 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { GiNextButton, GiPreviousButton, GiPlayButton, GiPauseButton } from "react-icons/gi";
+import React, { useRef, useState, useEffect } from "react";
+import {
+  GiNextButton,
+  GiPreviousButton,
+  GiPlayButton,
+  GiPauseButton,
+} from "react-icons/gi";
 import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
-import { FaRepeat, FaShuffle } from 'react-icons/fa6';
+import { FaRepeat, FaShuffle } from "react-icons/fa6";
+import Slider from "@mui/material/Slider";
 
-export default function Player({ songs, currentSongIndex, setCurrentSongIndex }) {
-    const currentSong = songs[currentSongIndex] || {}; 
-    const audioRef = useRef(null);
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [duration, setDuration] = useState(0);
-    const [volume, setVolume] = useState(1);
-    const [isMuted, setIsMuted] = useState(false);
-    const [isShuffle, setIsShuffle] = useState(false);
-    const [isRepeat, setIsRepeat] = useState(false);
 
-    useEffect(() => {
-        const audioElement = audioRef.current;
+export default function Player({
+  songs,
+  currentSongIndex,
+  setCurrentSongIndex,
+}) {
+  const currentSong = songs[currentSongIndex] || {};
+  const audioRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
+  const [isMuted, setIsMuted] = useState(false);
+  const [isShuffle, setIsShuffle] = useState(false);
+  const [isRepeat, setIsRepeat] = useState(false);
 
-        if (isPlaying) {
-            audioElement.play();
-        } else {
-            audioElement.pause();
-        }
-    }, [isPlaying]);
+  useEffect(() => {
+    const audioElement = audioRef.current;
 
-    useEffect(() => {
-        const audioElement = audioRef.current;
+    if (isPlaying) {
+      audioElement.play();
+    } else {
+      audioElement.pause();
+    }
+  }, [isPlaying]);
 
-        const handleTimeUpdate = () => {
-            setCurrentTime(audioElement.currentTime);
-            setDuration(audioElement.duration);
-        };
+  useEffect(() => {
+    const audioElement = audioRef.current;
 
-        const handleSongEnd = () => {
-            if (isRepeat) {
-                audioElement.currentTime = 0;
-                audioElement.play();
-            } else {
-                handleNextSong();
-            }
-        };
-
-        audioElement.addEventListener('timeupdate', handleTimeUpdate);
-        audioElement.addEventListener('ended', handleSongEnd);
-
-        return () => {
-            audioElement.removeEventListener('timeupdate', handleTimeUpdate);
-            audioElement.removeEventListener('ended', handleSongEnd);
-        };
-    }, [currentSongIndex, isRepeat, songs]);
-
-    const handlePlayPause = () => {
-        setIsPlaying(!isPlaying);
+    const handleTimeUpdate = () => {
+      setCurrentTime(audioElement.currentTime);
     };
 
-    const handleNextSong = () => {
-        let nextIndex;
-        if (isShuffle) {
-            nextIndex = Math.floor(Math.random() * songs.length);
-        } else {
-            nextIndex = (currentSongIndex + 1) % songs.length;
-        }
-        setCurrentSongIndex(nextIndex);
-        setIsPlaying(true);  // Start playing the next song automatically
+    const handleLoadedMetadata = () => {
+      setDuration(audioElement.duration || 0);
     };
 
-    const handlePrevSong = () => {
-        const prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-        setCurrentSongIndex(prevIndex);
-        setIsPlaying(true);  // Start playing the previous song automatically
+    const handleSongEnd = () => {
+      if (isRepeat) {
+        audioElement.currentTime = 0;
+        audioElement.play();
+      } else {
+        handleNextSong();
+      }
     };
 
-    const handleSeek = (e) => {
-        const seekTime = parseFloat(e.target.value);
-        audioRef.current.currentTime = seekTime;
+    audioElement.addEventListener("timeupdate", handleTimeUpdate);
+    audioElement.addEventListener("loadedmetadata", handleLoadedMetadata);
+    audioElement.addEventListener("ended", handleSongEnd);
+
+    return () => {
+      audioElement.removeEventListener("timeupdate", handleTimeUpdate);
+      audioElement.removeEventListener("loadedmetadata", handleLoadedMetadata);
+      audioElement.removeEventListener("ended", handleSongEnd);
     };
+  }, [currentSongIndex, isRepeat, songs]);
 
-    const handleVolumeChange = (e) => {
-        const newVolume = parseFloat(e.target.value);
-        setVolume(newVolume);
-        audioRef.current.volume = newVolume;
-        setIsMuted(newVolume === 0);
-    };
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
 
-    const toggleMute = () => {
-        setIsMuted(!isMuted);
-        audioRef.current.muted = !isMuted;
-    };
+  const handleNextSong = () => {
+    let nextIndex;
+    if (isShuffle) {
+      nextIndex = Math.floor(Math.random() * songs.length);
+    } else {
+      nextIndex = (currentSongIndex + 1) % songs.length;
+    }
+    setCurrentSongIndex(nextIndex);
+    setIsPlaying(false); // Stop the current song and wait for the user to click play again
+  };
 
-    const toggleShuffle = () => {
-        setIsShuffle(!isShuffle);
-    };
+  const handlePrevSong = () => {
+    const prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    setCurrentSongIndex(prevIndex);
+    setIsPlaying(false); // Stop the current song and wait for the user to click play again
+  };
 
-    const toggleRepeat = () => {
-        setIsRepeat(!isRepeat);
-    };
+  const handleSeek = (e, newValue) => {
+    audioRef.current.currentTime = newValue;
+    setCurrentTime(newValue);
+  };
 
-    const formatTime = (time) => {
-        const minutes = Math.floor(time / 60);
-        const seconds = Math.floor(time % 60);
-        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    };
+  const handleVolumeChange = (e, newValue) => {
+    setVolume(newValue);
+    audioRef.current.volume = newValue;
+    setIsMuted(newValue === 0);
+  };
 
-    return (
-        <div className="player">
-            <h2>Now Playing</h2>
-            <img src={currentSong.image} alt="" className={isPlaying ? "rotate" : "notrotate"} />
-            <p style={{ width: "300px" }}>{currentSong.title} <b>Song by</b> ( <span style={{ color: "skyblue", fontSize: "20px" }}>{currentSong.artist}</span> )</p>
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    audioRef.current.muted = !isMuted;
+  };
 
-            <audio ref={audioRef} src={currentSong.src} autoPlay />
+  const toggleShuffle = () => {
+    setIsShuffle(!isShuffle);
+  };
 
-            <div className="player-controls">
-                <button onClick={toggleShuffle} className={isShuffle ? 'active' : ''}><FaShuffle /></button>
-                <button onClick={handlePrevSong}><GiPreviousButton /></button>
-                <button onClick={handlePlayPause} className='play'>{isPlaying ? <GiPauseButton /> : <GiPlayButton />}</button>
-                <button onClick={handleNextSong}><GiNextButton /></button>
-                <button onClick={toggleRepeat} className={isRepeat ? 'active' : ''}><FaRepeat /></button>
-            </div>
-            <div className="progress-bar">
-                <span>{formatTime(currentTime)}</span>
-                <input
-                    type="range"
-                    value={currentTime}
-                    max={duration || 0}
-                    onChange={handleSeek}
-                    className="seek-bar"
-                />
-                <span>{formatTime(duration)}</span>
-            </div>
-            <br />
+  const toggleRepeat = () => {
+    setIsRepeat(!isRepeat);
+  };
 
-            <div className="volume-control">
-                <button onClick={toggleMute} className='mute'>{isMuted ? <FaVolumeMute /> : <FaVolumeUp />}</button>
-                <input
-                    type="range"
-                    value={volume}
-                    min="0"
-                    max="1"
-                    step="0.01"
-                    onChange={handleVolumeChange}
-                    className="volume-bar"
-                />
-            </div>
-        </div>
-    );
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+  };
+
+  return (
+    <div className="player">
+      <h2>Now Playing</h2>
+      <img
+        src={currentSong.image}
+        alt=""
+        className={isPlaying ? "rotate" : "notrotate"}
+        style={{ width: "150px", height: "150px" }}
+      />
+      <p style={{ width: "300px" }}>
+        {currentSong.title} <b>Song by</b> ({" "}
+        <span style={{ color: "skyblue", fontSize: "20px" }}>
+          {currentSong.artist}
+        </span>{" "}
+        )
+      </p>
+
+      <audio ref={audioRef} src={currentSong.src} />
+      <div
+        className="progress-bar"
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          alignItems: "center",
+          gap: "10px",
+        }}
+      >
+        <span>{formatTime(currentTime)}</span>
+        <Slider
+          value={currentTime}
+          min={0}
+          max={duration}
+          onChange={handleSeek}
+          valueLabelDisplay="auto"
+          valueLabelFormat={(value) => formatTime(value)}
+          sx={{ width: 300, color: "skyblue" }}
+        />
+        <span>{formatTime(duration)}</span>
+      </div>
+      <div
+        className="player-controls"
+        style={{
+          fontSize: "1.5rem",
+          display: "flex",
+          justifyContent: "center",
+          gap: "20px",
+        }}
+      >
+        <button onClick={toggleShuffle} className={isShuffle ? "active" : ""}>
+          <FaShuffle />
+        </button>
+        <button onClick={handlePrevSong} className="play">
+          <GiPreviousButton />
+        </button>
+        <button onClick={handlePlayPause} className="play" style={{fontSize:"40px"}}>
+          {isPlaying ? <GiPauseButton /> : <GiPlayButton />}
+        </button>
+        <button onClick={handleNextSong} className="play">
+          <GiNextButton/>
+        </button>
+        <button onClick={toggleRepeat} className={isRepeat ? "active" : ""}>
+          <FaRepeat />
+        </button>
+      </div>
+
+     
+      <br />
+
+      <div
+        className="volume-control"
+        style={{ display: "flex", alignItems: "center", gap: "10px" }}
+      >
+        <button
+          onClick={toggleMute}
+          className="mute"
+          style={{ fontSize: "1.5rem" }}
+        >
+          {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
+        </button>
+        <Slider
+    value={volume}
+    min={0}
+    max={1}
+    step={0.01}
+    onChange={handleVolumeChange}
+    valueLabelDisplay="auto"
+    valueLabelFormat={(value) => `${Math.round(value * 100)}%`}
+    sx={{ width: 100, color: "skyblue", height: 5 }}
+/>
+      </div>
+    </div>
+  );
 }
