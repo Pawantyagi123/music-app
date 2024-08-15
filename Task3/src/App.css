@@ -127,10 +127,10 @@ justify-content: space-between;
  align-items: center;
  flex-direction: column;
  padding: 20px;
-  background-color: rgba(164, 156, 156, 0.268);
+  background-color: rgba(238, 243, 244, 0.268);
   backdrop-filter: blur(10px);
   height: 70vh;
-  border-radius: 5px;
+  border-radius: 10px;
  backdrop-filter: blur(15px);
 }
 
@@ -159,19 +159,21 @@ justify-content: space-between;
   animation: rotate 5s linear infinite;
   transition: transform 0.3s ease;
   transition: border 1s ease-in-out linear;
-  
+  object-fit: contain;
 }
 
 .notrotate{
   width: 200px;
   height: 200px;
   border-radius: 50%;
+  opacity: 0.7;
 }
 
 @media(max-width:600px){
   .player{
     width: 100%;
   margin: 30px 10px;
+  height: 80vh;
   }
   .content{
     padding: 0px;
@@ -300,17 +302,9 @@ input{
   display: flex;
   justify-content: center;
   align-items: center;
-
-
+  padding-right: 20px;
 }
 
-.volume-bar {
-  width: 90px;
-  height: 6px;
-  border-radius: 4px;
-  outline: none;
-  
-}
 
 .mute{
   border: none;
@@ -348,12 +342,13 @@ button {
 button.active {
   color: yellow; /* Change this to your preferred active color */
   border: 1px solid yellow;
+  background-color: #4d4848;
 }
 
 .play{
   background-color: transparent;
-  width: 65px;
-  height: 60px;
+  width: 60px;
+  height: 55px;
 }
 
 .play:hover{
@@ -361,3 +356,29 @@ button.active {
   
 }
 
+.songchangebtn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.player-controls{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-size: "1.5rem";
+  gap: "20px"
+}
+
+.songchange{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image{
+  width: 50%;
+  object-fit: cover;
+}

@@ -9,7 +9,6 @@ import { FaVolumeUp, FaVolumeMute } from "react-icons/fa";
 import { FaRepeat, FaShuffle } from "react-icons/fa6";
 import Slider from "@mui/material/Slider";
 
-
 export default function Player({
   songs,
   currentSongIndex,
@@ -116,24 +115,34 @@ export default function Player({
     const seconds = Math.floor(time % 60);
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
+  const formatTitle = (title) => {
+    if (!title) return ""; // Return an empty string if title is undefined or null
+    return title.length > 10 ? `${title.substring(0, 10)}...` : title;
+  };
+const formatArtist = (artist) => {
+  if(!artist) return "";
+  return artist.length > 10 ? `${artist.substring(0, 10)}...` : artist;
+}  
 
   return (
     <div className="player">
       <h2>Now Playing</h2>
+      
       <img
         src={currentSong.image}
         alt=""
         className={isPlaying ? "rotate" : "notrotate"}
-        style={{ width: "150px", height: "150px" }}
       />
-      <p style={{ width: "300px" }}>
-        {currentSong.title} <b>Song by</b> ({" "}
-        <span style={{ color: "skyblue", fontSize: "20px" }}>
-          {currentSong.artist}
+      
+      <div className="player-text">
+      <p>
+        {formatTitle(currentSong.title)} <b>Song by</b> ({" "}
+        <span style={{ color: "black", fontSize: "20px",fontWeight:"bold" }}>
+          {formatArtist(currentSong.artist)}
         </span>{" "}
         )
       </p>
-
+      </div>
       <audio ref={audioRef} src={currentSong.src} />
       <div
         className="progress-bar"
@@ -158,37 +167,33 @@ export default function Player({
       </div>
       <div
         className="player-controls"
-        style={{
-          fontSize: "1.5rem",
-          display: "flex",
-          justifyContent: "center",
-          gap: "20px",
-        }}
       >
+        <div className="songchangebtn">
         <button onClick={toggleShuffle} className={isShuffle ? "active" : ""}>
           <FaShuffle />
         </button>
+        <div className="songchange">
         <button onClick={handlePrevSong} className="play">
           <GiPreviousButton />
         </button>
-        <button onClick={handlePlayPause} className="play" style={{fontSize:"40px"}}>
+        <button
+          onClick={handlePlayPause}
+          className="play"
+          style={{ fontSize: "40px" }}
+        >
           {isPlaying ? <GiPauseButton /> : <GiPlayButton />}
         </button>
         <button onClick={handleNextSong} className="play">
-          <GiNextButton/>
+          <GiNextButton />
         </button>
+        </div>
         <button onClick={toggleRepeat} className={isRepeat ? "active" : ""}>
           <FaRepeat />
         </button>
-      </div>
+      
+        </div>
 
-     
-      <br />
-
-      <div
-        className="volume-control"
-        style={{ display: "flex", alignItems: "center", gap: "10px" }}
-      >
+      <div className="volume-control">
         <button
           onClick={toggleMute}
           className="mute"
@@ -197,15 +202,16 @@ export default function Player({
           {isMuted ? <FaVolumeMute /> : <FaVolumeUp />}
         </button>
         <Slider
-    value={volume}
-    min={0}
-    max={1}
-    step={0.01}
-    onChange={handleVolumeChange}
-    valueLabelDisplay="auto"
-    valueLabelFormat={(value) => `${Math.round(value * 100)}%`}
-    sx={{ width: 100, color: "skyblue", height: 5 }}
-/>
+          value={volume}
+          min={0}
+          max={1}
+          step={0.01}
+          onChange={handleVolumeChange}
+          valueLabelDisplay="auto"
+          valueLabelFormat={(value) => `${Math.round(value * 100)}%`}
+          sx={{ width: 150, color: "skyblue", height: 5 }}
+        />
+      </div>
       </div>
     </div>
   );
