@@ -168,12 +168,14 @@ justify-content: space-between;
   border-radius: 50%;
   opacity: 0.7;
 }
-
+@media(max-width:1440px){
+  .player{
+    height: 80vh;
+  }
+}
 @media(max-width:600px){
   .player{
     width: 100%;
-  margin: 30px 10px;
-  height: 80vh;
   }
   .content{
     padding: 0px;
